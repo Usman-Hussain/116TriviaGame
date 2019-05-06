@@ -1,12 +1,12 @@
+
 var socket = io.connect({transports: ['websocket']});
 socket.on('message', function (event) {
-
-    document.getElementById("username").innerHTML = event;
+    document.getElementById("nickname").innerHTML = event;
 
 });
-
+socket.emit('register','me');
 function register(){
-    socket.emit("register", "me");
+    socket.emit('register');
 }
 
 /**function clickGold(){

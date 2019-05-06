@@ -29,7 +29,12 @@ def game():
     username = request.form.get('username')
     if username not in points:
         points[username] = 0
-    return send_from_directory('message', 'game.js')
+    return send_from_directory('html', 'EnterNickname.html')
+
+
+@app.route('/')
+def index():
+    return send_from_directory('html', '1st Page.html')
 
 
 @app.route('/<path:filename>')
