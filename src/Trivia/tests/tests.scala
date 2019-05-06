@@ -30,7 +30,7 @@ class tests {
     class testGui extends FunSuite {
        test("Nickname"){
          val name = "Jiggy"
-         assert(Condtional.)
+
        }
 
 

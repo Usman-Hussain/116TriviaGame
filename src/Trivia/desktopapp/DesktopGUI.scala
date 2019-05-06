@@ -20,11 +20,11 @@ class HandleMessagesFromPython() extends Emitter.Listener {
       val gameState: JsValue = Json.parse(jsonGameState)
       val points = (gameState \ "points").as[String]
 
-      DesktopGUI.pointsDisplay.text = Math.round(points).toString
+      //DesktopGUI.pointsDisplay.text = Math.round(points).toString
 
       val mapping = (gameState \ "equipment").as[Map[String, JsValue]]
       for ((k, v) <- mapping) {
-        DesktopGUI.pointsDisplay(k).text = (v \ "buttonText").as[String]
+        //DesktopGUI.pointsDisplay(k).text = (v \ "buttonText").as[String]
       }
     })
 
@@ -68,20 +68,20 @@ object DesktopGUI extends JFXApp {
 
     style = "-fx-font: 18 ariel;"
   }
-  val display_this = new categories
-  val digButton = new DigGoldButton(socket, 2, 2)
+  //val display_this = new categories
+
 
   val Choices: List[String] = List("a", "b", "c")
-  val triviabuttons: Map[String, join] = triviabuttons.map((nickname: String) => (equipmentKey, new BuyEquipmentButton(equipmentKey, socket))).toMap
+
 
   this.stage = new PrimaryStage {
     title = "Trivia"
     scene = new Scene() {
       content = List(
         new GridPane {
-          add(digButton, 0, 0, 2, 2)
-          add(goldDisplay, 0, 2)
-          Choices.indices.foreach(i => add(equipmentButtons(equipmentList.apply(i)), 2, i))
+         // add(digButton, 0, 0, 2, 2)
+
+          //Choices.indices.foreach(i => add(equipmentButtons(equipmentList.apply(i)), 2, i))
         }
       )
     }
