@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trivia Simulator 2019</title>
+
+
+    <script>
+
+        function submit() {
+            var input = document.getElementById("nicknamesub").value;
+            document.forms["nicknamesub"].submit();
+        }
+
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+
+    </script>
+
+
+
+</head>
+
+
+<body>
+
+<style>
+    #Header {
+        background-color: skyblue;
+        color: black;
+        padding: 40px;
+        text-align: center
+    }
+    #question {
+
+        background-color: aliceblue;
+        color: black;
+        padding: 100px;
+        text-align: center
+
+    }
+</style>
+
+</head>
+<h1 id= "Header">Trivia Simulator 2019 <br> Developed by Kelly, Anthony, Usman </h1>
+
+
+    <form name="nicknamesub" action="1st%20Page.html" method="get">
+       <input type="text" name="fname"><br>
+        <input type="button" onclick="submit()" value="Submit Nickname">
+    </form>
+
+
+
+
+<!--
+<form id = "question">
+    Enter Nickname:
+    <br>
+    <input type="text" name="firstname">
+    <br>
+    <input type="submit">
+</form>
+-->
+
+</body>
+
+
+
+</html>
+
