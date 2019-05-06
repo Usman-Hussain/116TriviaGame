@@ -60,5 +60,7 @@ function checkAnswer(selectedAnswer) {
     else{
         window.alert("Wrong!")
     }
+
+
 }
 

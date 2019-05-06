@@ -18,11 +18,7 @@ object Client {
     socket.on("message", new HandleMessagesFromPython)
     socket.connect()
     socket.emit("register", "ScalaUser")
-    socket.emit("clickGold")
-    socket.emit("clickGold")
-    socket.emit("clickGold")
-    socket.emit("clickGold")
-    socket.emit("clickGold")
+
   }
 }
 
