@@ -4,25 +4,7 @@ from flask_socketio import SocketIO
 app = Flask(__name__)
 socket_server = SocketIO(app)
 sidToUsername = {}
-points={}
-
-
-@socket_server.on('register')
-def register(username):
-    sidToUsername[request.sid] = username
-    if username not in points:
-        points[username] = 0
-    socket_server.emit("message", str(points[username]), room=request.sid)
-    print(username + " connected")
-
-
-@socket_server.on('disconnect')
-def disconnect():
-    if request.sid in sidToUsername:
-        username = sidToUsername[request.sid]
-    del sidToUsername[request.sid]
-    print(username + " disconnected")
-
+points = {}
 
 @app.route('/')
 def index():
@@ -32,8 +14,9 @@ def index():
 @app.route('/game', methods=["POST"])
 def game():
     username = request.form.get('username')
-    # do something with username
-    return send_from_directory('static', '1st Page.html')
+    if username not in points:
+        points[username] = 0
+    return send_from_directory('messege', 'game.js')
 
 
 @app.route('/<path:filename>')

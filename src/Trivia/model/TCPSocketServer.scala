@@ -10,7 +10,7 @@ class TCPSocketServer(gameActor: ActorRef) extends Actor {
   import Tcp._
   import context.system
 
-  IO(Tcp) ! Bind(self, new InetSocketAddress("localhost", 8000))
+  IO(Tcp) ! Bind(self, new InetSocketAddress("localhost", 8080))
 
   var webServers: Set[ActorRef] = Set()
   var buffer: String = ""
