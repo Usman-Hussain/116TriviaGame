@@ -1,5 +1,10 @@
 
 var socket = io.connect({transports: ['websocket']});
+
+socket.on('connect', function (event) {
+    // connected to server
+});
+
 socket.on('message', function (event) {
     document.getElementById("nickname").innerHTML = event;
 

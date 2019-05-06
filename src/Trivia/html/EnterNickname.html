@@ -13,19 +13,8 @@
     <script type =text/javascript src="/Trivia/web/game.js"></script>
 
 
-<script>
-function submit() {
-            var input = document.getElementById("nicknamesub").value;
-            document.forms["nicknamesub"].submit();
-        }
-
-</script>
-
-
 
 </head>
-
-
 <body>
 
 <style>
@@ -45,14 +34,14 @@ function submit() {
     }
 </style>
 
-</head>
+
 <h1 id= "Header">Trivia Simulator 2019 <br> Developed by Kelly, Anthony, Usman </h1>
 
 <button id="nickname" onclick="clickGold();">Save Name!</button>
 <div id="username"></div>
 <script src="/Trivia/web/game.js"></script>
 
-        <form action="Trivia/html/game" method="post">
+        <form action="/game" method="post">
             <label>
                   Save Nickname:
                 <input type="text" name="username"/>

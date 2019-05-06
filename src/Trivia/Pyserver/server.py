@@ -29,7 +29,8 @@ def game():
     username = request.form.get('username')
     if username not in points:
         points[username] = 0
-    return send_from_directory('html', 'EnterNickname.html')
+    socket_server.emit("message", str(username), room=request.sid)
+    print(username+"connected")
 
 
 @app.route('/')
@@ -39,8 +40,7 @@ def index():
 
 @app.route('/<path:filename>')
 def static_files(filename):
-    return send_from_directory('.', filename)
-
+    return send_from_directory('html', filename)
 
 
 print("Listening on port 8080")
