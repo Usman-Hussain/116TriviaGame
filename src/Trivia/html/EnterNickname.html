@@ -18,7 +18,7 @@ function submit() {
             var input = document.getElementById("nicknamesub").value;
             document.forms["nicknamesub"].submit();
         }
-src=
+
 </script>
 
 
@@ -49,23 +49,33 @@ src=
 <h1 id= "Header">Trivia Simulator 2019 <br> Developed by Kelly, Anthony, Usman </h1>
 
 
-    <form name="nicknamesub" action="1st%20Page.html" method="get">
-       <input type="text" name="fname"><br>
-        <input type="button" onclick="submit()" value="Submit Nickname">
-    </form>
 
+        <form action="/game" method="post">
+            <label>
+                  Save Nickname:
+                <input type="text" name="username"/>
+            </label>
+            <input type="submit"/>
+        </form>
+<Br> <br> <br>
+<form action="1st%20Page.html">
+     <br>
+    <input type="submit" value="Submit">
 
-
-
-<!--
-<form id = "question">
-    Enter Nickname:
-    <br>
-    <input type="text" name="firstname">
-    <br>
-    <input type="submit">
 </form>
--->
+
+
+
+
+        <!--
+        <form id = "question">
+            Enter Nickname:
+            <br>
+            <input type="text" name="firstname">
+            <br>
+            <input type="submit">
+        </form>
+        -->
 
 </body>
 

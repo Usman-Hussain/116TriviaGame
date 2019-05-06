@@ -7,3 +7,6 @@ socket.emit("register", "JSUser");
 /**function clickGold(){
     socket.emit("clickGold");
 } **/
+
+
+
