@@ -2,7 +2,7 @@ package Trivia.tests
 
 import Trivia.web.categories
 import org.scalatest._
-import Trivia.Pyserver.server.py
+
 
 
 
@@ -37,7 +37,7 @@ class tests {
     }
 
     class testWebApp extends FunSuite {
-     var resp =
+
 
     }
 
