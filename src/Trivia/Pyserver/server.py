@@ -21,7 +21,7 @@ def disconnect():
     if request.sid in sidToUsername:
         username = sidToUsername[request.sid]
     del sidToUsername[request.sid]
-    print(username + " disconnected")
+    print(username+"disconnected")
 
 
 @app.route('/game', methods=["POST"])
