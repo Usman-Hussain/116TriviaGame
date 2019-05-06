@@ -54,6 +54,11 @@ function display_this(){
 }
 
 function checkAnswer(selectedAnswer) {
-    window.alert("sometext");
+    if (selectedAnswer == randomizeQuestions(dict1)[1]){
+    window.alert("correct!")
+    }
+    else{
+        window.alert("Wrong!")
+    }
 }
 
