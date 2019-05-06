@@ -8,8 +8,8 @@ import io.socket.emitter.Emitter
 
 class HandleMessagesFromPython() extends Emitter.Listener {
   override def call(objects: Object*): Unit = {
-    val gold = objects.apply(0).toString
-    println("I have " + gold + " gold")
+    val name = objects.apply(0).toString
+    println("Your nickname is " + name)
   }
 }
 object Client {

@@ -6,9 +6,22 @@ socket_server = SocketIO(app)
 sidToUsername = {}
 points = {}
 
-@app.route('/')
-def index():
-    return send_from_directory('.', '1st Page.html')
+
+@socket_server.on('register')
+def register(username):
+    sidToUsername[request.sid] = username
+    if username not in points:
+        points[username] = 0
+    socket_server.emit("message", str(username), room=request.sid)
+    print(username + " connected")
+
+
+@socket_server.on('disconnect')
+def disconnect():
+    if request.sid in sidToUsername:
+        username = sidToUsername[request.sid]
+    del sidToUsername[request.sid]
+    print(username + " disconnected")
 
 
 @app.route('/game', methods=["POST"])
@@ -16,7 +29,7 @@ def game():
     username = request.form.get('username')
     if username not in points:
         points[username] = 0
-    return send_from_directory('messege', 'game.js')
+    return send_from_directory('message', 'game.js')
 
 
 @app.route('/<path:filename>')
