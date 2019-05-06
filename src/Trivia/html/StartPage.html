@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <head>
     <meta charset="UTF-8">
-    <title>Trivia Simulator 2019</title>
+    <title >StartPage</title>
+    <script type="text/javascript" src="../web/categories.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
 </head>
-
-
-<body>
-
 <style>
     #Header {
         background-color: skyblue;
@@ -18,111 +15,36 @@
         padding: 40px;
         text-align: center
     }
-    #question {
-
-        background-color: aliceblue;
-        color: black;
-        padding: 100px;
-        text-align: center
-
-    }
 </style>
 
-</head>
-<h1 id= "Header">Trivia Simulator 2019 <br> Developed by Kelly, Anthony, Usman </h1>
 
-<form action="1st%20Page.html">
-    Enter Nickname:<br>
-    <input type="text" name="firstname" value="">
+<body onload="display_this();">
+
+<p id ="Question"></p>
+
+
+<FORM method="POST" onSubmit="return checkAnswer(this);">
     <br>
-    <input type="submit" value="Submit">
-
-</form>
-
-
-
-
-<!--
-<form id = "question">
-    Enter Nickname:
+    <INPUT TYPE="RADIO" VALUE="1" NAME="cc"> <label id ="Answer1"></label>
+    <BR>
     <br>
-    <input type="text" name="firstname">
+    <INPUT TYPE="RADIO" VALUE="2" NAME="cc"><label id ="Answer2"></label>
+    <BR>
     <br>
-    <input type="submit">
-</form>
--->
-
-</body>
-
-
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <p>I am: </p>
-
-<h2>  <button type="button">Happy</button></h2>
-
-
-  <button type="button">Happy</button>
-<button type="button">Sad</button>
-<button type="button">Indifferent</button>
-<button type="button">Kill Me!</button>
-
-Who is Jesse Hartloff?
-
-<FORM method="POST"
-      onSubmit="return checkAnswer(this,'B');"
->
-
-    <INPUT TYPE="RADIO" VALUE="A" NAME="cc">
-    A. Another name for Java<BR>
-
-    <INPUT TYPE="RADIO" VALUE="B" NAME="cc">
-    B. Just a man <BR>
-
-    <INPUT TYPE="RADIO" VALUE="C" NAME="cc">
-    C. skrt skrt <BR>
-
+    <INPUT id = "three" TYPE="RADIO" VALUE="3" NAME="cc"><label id ="Answer3"></label>
+    <BR>
+    <br>
+    <INPUT id = "four" TYPE="RADIO" VALUE="4" NAME="cc"><label id ="Answer4"></label>
+    <BR>
+    <br>
     <INPUT TYPE="SUBMIT" VALUE="Submit Answer">
 
-
-
+    <br><br><br>
+    <div>Time left = <span id="timer"></span></div>
+    <br>r
+    <p2> 257/300 players left</p2>
 </FORM>
 
+</body>
+</html>
 
-
-<footer>
-    <br>
-    <br>
-    <br>
-    <p>Developed by Kelly, Anthony, Usman</p>
-</footer>
--->

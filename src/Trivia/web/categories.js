@@ -1,54 +1,7 @@
-
-var questionHTML="";
-var theUrl="https://opentdb.com/api.php?amount=10"
-//http Get request
-function httpGet()
-{   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-
-var data=JSON.parse(httpGet());
-
-//gets question
-function filterQuestion(){
-    var theQuestion=data["results"][0]["question"];
-        return theQuestion
-}
-//gets correct answer
-function filterAnswer(){
-    var theAnswer=data["results"][0]["correct_answer"];
-    return theAnswer;
-}
-
-//gets all other answers
-function filterIncorrect(){
-    var incorrect=data["results"][0]["incorrect_answers"];
-    return incorrect;
-}
-//seperates choices into ABCD
-var choiceA=[];
-var choiceB=[];
-var choiceC=[];
-var choiceD=[];
-
-//returns List of all choices
-function choices(){
-    var x=[];
-    x.push(filterAnswer());
-    for(var i of filterIncorrect()){
-        x.push(i)
-    };
-    return x
-}
-//shuffles choices in the choices array so answer isn't always at index 0
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-
         // Pick a remaining element
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -60,39 +13,47 @@ function shuffle(array) {
     }
     return array;
 }
-//stores shuffled list in variable
-var shuffledChoices=shuffle(choices());
 
 
-//adds elements of shuffled list into own arrays
-choiceA.push(shuffledChoices[0]);
-choiceB.push(shuffledChoices[1]);
-choiceC.push(shuffledChoices[2]);
-choiceD.push(shuffledChoices[3]);
+var JSONFile = '{"response_code":0,"results":[{"category":"Vehicles","type":"multiple","difficulty":"easy","question":"Where are the cars of the brand &quot;Ferrari&quot; manufactured?","correct_answer":"Italy","incorrect_answers":["Romania","Germany","Russia"]},{"category":"Vehicles","type":"boolean","difficulty":"hard","question":"In 1993 Swedish car manufacturer Saab experimented with replacing the steering wheel with a joystick in a Saab 9000.","correct_answer":"True","incorrect_answers":["False"]},{"category":"Entertainment: Board Games","type":"multiple","difficulty":"easy","question":"In a standard game of Monopoly, what colour are the two cheapest properties?","correct_answer":"Brown","incorrect_answers":["Green","Yellow","Blue"]},{"category":"General Knowledge","type":"multiple","difficulty":"medium","question":"In a standard set of playing cards, which is the only king without a moustache?","correct_answer":"Hearts","incorrect_answers":["Spades","Diamonds","Clubs"]},{"category":"Entertainment: Music","type":"multiple","difficulty":"easy","question":"In the  Rossini opera, what was the name of &#039;The Barber of Seville&#039;?","correct_answer":"Figaro","incorrect_answers":["Angelo","Fernando","Dave"]},{"category":"Entertainment: Music","type":"multiple","difficulty":"easy","question":"Where does the Mac part of the name Fleetwood Mac come from?","correct_answer":"John McVie","incorrect_answers":["Christine McVie","Mac McAnally","David Tennant"]},{"category":"Animals","type":"multiple","difficulty":"easy","question":"Hippocampus is the Latin name for which marine creature?","correct_answer":"Seahorse","incorrect_answers":["Dolphin","Whale","Octopus"]},{"category":"Art","type":"multiple","difficulty":"medium","question":"Which artist&rsquo;s studio was known as &#039;The Factory&#039;?","correct_answer":"Andy Warhol","incorrect_answers":["Roy Lichtenstein","David Hockney","Peter Blake"]},{"category":"Sports","type":"multiple","difficulty":"medium","question":"Which Formula One driver was nicknamed &#039;The Professor&#039;?","correct_answer":"Alain Prost","incorrect_answers":["Ayrton Senna","Niki Lauda","Emerson Fittipaldi"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"medium","question":"The original Planetside was released in North America on...","correct_answer":"May 20, 2003","incorrect_answers":["June 17, 2001","September 29, 2003","January 14, 2005"]},{"category":"Entertainment: Music","type":"boolean","difficulty":"easy","question":"American rapper Dr. Dre actually has a Ph.D. doctorate.","correct_answer":"False","incorrect_answers":["True"]},{"category":"Animals","type":"boolean","difficulty":"medium","question":"&quot;Kamea,&quot; the Gilbertese Islander word for dog, is derived from the English phrase &quot;Come here!&quot;","correct_answer":"True","incorrect_answers":["False"]},{"category":"Geography","type":"multiple","difficulty":"easy","question":"What is the 15th letter of the Greek alphabet?","correct_answer":"Omicron (&Omicron;)","incorrect_answers":["Sigma (&Sigma;)","Pi (&Pi;)","Nu (&Nu;)"]},{"category":"Geography","type":"multiple","difficulty":"medium","question":"All of the following countries have official claims to territory in Antartica EXCEPT:","correct_answer":"United States","incorrect_answers":["Australia","Chile","Norway"]},{"category":"General Knowledge","type":"boolean","difficulty":"medium","question":"The sum of all the numbers on a roulette wheel is 666.","correct_answer":"True","incorrect_answers":["False"]},{"category":"Vehicles","type":"multiple","difficulty":"medium","question":"Which of the following vehicles featured a full glass roof at base model?","correct_answer":"Renault Avantime","incorrect_answers":["Chevy Volt","Mercedes-Benz A-Class","Honda Odyssey"]},{"category":"History","type":"multiple","difficulty":"medium","question":"The creator of the Enigma Cypher and Machine was of what nationality?","correct_answer":"German","incorrect_answers":["American","British","Polish"]},{"category":"Entertainment: Japanese Anime & Manga","type":"multiple","difficulty":"medium","question":"In the anime series &quot;Full Metal Alchemist&quot;, what do Alchemists consider the greatest taboo?","correct_answer":"Human Transmutation ","incorrect_answers":["Transmuting Lead Into Gold","Using Alchemy For Crime ","Preforming Without A Permit"]},{"category":"Science & Nature","type":"multiple","difficulty":"easy","question":"What is the primary addictive substance found in tobacco?","correct_answer":"Nicotine","incorrect_answers":["Cathinone","Ephedrine","Glaucine"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"medium","question":"Which of these &quot;Worms&quot; games featured 3D gameplay?","correct_answer":"Worms 4: Mayhem","incorrect_answers":["Worms W.M.D","Worms Reloaded","Worms: Open Warfare 2"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"easy","question":"When was the game &#039;Portal 2&#039; released?","correct_answer":"2011","incorrect_answers":["2014","2009","2007"]},{"category":"Entertainment: Board Games","type":"multiple","difficulty":"medium","question":"The board game, Nightmare was released in what year?","correct_answer":"1991","incorrect_answers":["1992","1989","1995"]},{"category":"Entertainment: Music","type":"multiple","difficulty":"medium","question":"What&#039;s the most common time signature for rock songs?","correct_answer":"4\/4","incorrect_answers":["1\/2","8\/12","2\/4"]},{"category":"Science & Nature","type":"multiple","difficulty":"easy","question":"Who is the chemical element Curium named after?","correct_answer":"Marie &amp; Pierre Curie","incorrect_answers":["The Curiosity Rover","Curious George","Stephen Curry"]},{"category":"Entertainment: Video Games","type":"boolean","difficulty":"easy","question":"The ultimate phrase used by Pharah from Overwatch is: &quot;Justice rains from above!&quot;","correct_answer":"True","incorrect_answers":["False"]},{"category":"History","type":"multiple","difficulty":"medium","question":"Where and when was the first cardboard box made for industrial use?","correct_answer":"England, 1817","incorrect_answers":["United States, 1817","England, 1917","United States, 1917"]},{"category":"Entertainment: Board Games","type":"boolean","difficulty":"easy","question":"The Angry Video Game Nerd&#039;s alter ego is &quot;Board James&quot;.","correct_answer":"True","incorrect_answers":["False"]},{"category":"Animals","type":"boolean","difficulty":"medium","question":"The average lifespan of a wildcat is only around 5-6 years. ","correct_answer":"False","incorrect_answers":["True"]},{"category":"Science & Nature","type":"multiple","difficulty":"medium","question":"Which of these is a type of stretch\/deep tendon reflex?","correct_answer":"Ankle jerk reflex","incorrect_answers":["Gag reflex","Pupillary light reflex","Scratch reflex"]},{"category":"Entertainment: Video Games","type":"boolean","difficulty":"easy","question":"Danganronpa 2: Goodbye Despair featured all of the surviving students from the first game.","correct_answer":"True","incorrect_answers":["False"]},{"category":"General Knowledge","type":"multiple","difficulty":"medium","question":"What character was once considered to be the 27th letter of the alphabet?","correct_answer":"Ampersand","incorrect_answers":["Interrobang","Tilde","Pilcrow"]},{"category":"History","type":"multiple","difficulty":"medium","question":"Which WWII tank ace is credited with having destroyed the most tanks?","correct_answer":"Kurt Knispel","incorrect_answers":["Michael Wittmann","Walter Kniep","Otto Carius"]},{"category":"Entertainment: Japanese Anime & Manga","type":"multiple","difficulty":"medium","question":"In the anime Assassination Classroom what is the class that Korosensei teaches?","correct_answer":"Class 3-E","incorrect_answers":["Class 3-A","Class 3-B","Class 3-D"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"hard","question":"In the National Pokedex what number is Porygon-Z?","correct_answer":"474","incorrect_answers":["376","432","589"]},{"category":"Entertainment: Music","type":"multiple","difficulty":"medium","question":"What is the name of the main character from the music video of &quot;Shelter&quot; by Porter Robinson and A-1 Studios?","correct_answer":"Rin","incorrect_answers":["Rem","Ren","Ram"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"hard","question":"Which character, in the game &quot;Morenatsu&quot;, has the most possible endings to their route, at a total of four different endings?","correct_answer":"Shin Kuroi","incorrect_answers":["Kouya Aotsuki","Soutarou Touno","Torahiko Ooshima"]},{"category":"Mythology","type":"multiple","difficulty":"hard","question":"Who is the Egyptian god of reproduction and lettuce?","correct_answer":"Min","incorrect_answers":["Menu","Mut","Meret"]},{"category":"Entertainment: Film","type":"multiple","difficulty":"medium","question":"Which animated film did Steven Lisberger direct in 1980 before going on to direct Tron?","correct_answer":"Animalympics","incorrect_answers":["The Fox and the Hound","The Black Cauldron","The Great Mouse Detecive"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"medium","question":"In Overwatch, how old is Reinhardt Wilhelm?","correct_answer":"61","incorrect_answers":["59","65","62"]},{"category":"Science & Nature","type":"multiple","difficulty":"medium","question":"What is radiation measured in?","correct_answer":"Gray ","incorrect_answers":["Watt","Decibel","Kelvin"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"medium","question":"Danganronpa Another Episode: Ultra Despair Girls is set after which Danganronpa game?","correct_answer":"Danganronpa: Trigger Happy Havoc","incorrect_answers":["Danganronpa 2: Goodbye Despair","Danganronpa V3: Killing Harmony","Danganronpa 3: The End of Hope&#039;s Peak High School"]},{"category":"Entertainment: Television","type":"multiple","difficulty":"medium","question":"Which of following is rude and dishonorable by Klingon standards?","correct_answer":"Taking his D&#039;k tahg","incorrect_answers":["Insulting and laughing at him at the dinner table","Reaching over and taking his meal","Punching him and taking his ship station position"]},{"category":"Entertainment: Japanese Anime & Manga","type":"boolean","difficulty":"medium","question":"In &quot;JoJo&#039;s Bizarre Adventure&quot;, Father Enrico Pucchi uses a total of 3 stands in Part 6: Stone Ocean.","correct_answer":"True","incorrect_answers":["False"]},{"category":"Entertainment: Cartoon & Animations","type":"multiple","difficulty":"hard","question":"In &quot;Rick and Morty&quot;, from which dimension do Rick and Morty originate from?","correct_answer":"C-137","incorrect_answers":["J1977","C-136","C500-a"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"easy","question":"In &quot;Overwatch&quot;, which hero is able to wallride?","correct_answer":"Lucio","incorrect_answers":["Reinhardt","Sombra","Mercy"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"easy","question":"In which mall does &quot;Dead Rising&quot; take place?","correct_answer":"Willamette Parkview Mall","incorrect_answers":["Liberty Mall","Twin Pines Mall","Central Square Shopping Center"]},{"category":"General Knowledge","type":"boolean","difficulty":"easy","question":"Dihydrogen Monoxide was banned due to health risks after being discovered in 1983 inside swimming pools and drinking water.","correct_answer":"False","incorrect_answers":["True"]},{"category":"Animals","type":"multiple","difficulty":"hard","question":"Which of the following is another name for the &quot;Poecilotheria Metallica Tarantula&quot;?","correct_answer":"Gooty","incorrect_answers":["Hopper","Silver Stripe","Woebegone"]},{"category":"Entertainment: Board Games","type":"multiple","difficulty":"hard","question":"When Magic: The Gathering was first solicited, which of the following was it originally titled?","correct_answer":"Mana Clash","incorrect_answers":["Magic","Magic Clash","Mana Duels"]},{"category":"Entertainment: Video Games","type":"multiple","difficulty":"easy","question":"Which of the following is NOT a Nintendo game console?","correct_answer":"Dreamcast","incorrect_answers":["SNES","Wii","Switch"]}]}';
+var dict1 = JSON.parse(JSONFile);
 
-console.log(filterQuestion());
+function randomizeQuestions(dict1){
+    var ranNum = Math.floor(Math.random() * Math.floor(100));
+    if(dict1["results"][ranNum]["correct_answer"] == "True"||dict1["results"][ranNum]["correct_answer"] == "False"){
+        var retVal = [dict1["results"][ranNum]["question"], dict1["results"][ranNum]["correct_answer"],dict1["results"][ranNum]["incorrect_answers"][0]];
+        return retVal;
+    }else{
+        var retVal = [dict1["results"][ranNum]["question"], dict1["results"][ranNum]["correct_answer"],dict1["results"][ranNum]["incorrect_answers"][0],dict1["results"][ranNum]["incorrect_answers"][1],dict1["results"][ranNum]["incorrect_answers"][2]];
+        return retVal;
+    }
 
+}
 
+function display_this(){
+    var arr = randomizeQuestions(dict1);
+    var correctAnswer =  arr[1];
+    var indexes = [1,2,3,4];
+    indexes = shuffle(indexes);
+    if(arr.length == 3){
+        document.getElementById("Question").innerHTML  = arr[0];
+        document.getElementById("Answer1").innerHTML  = arr[1];
+        document.getElementById("Answer2").innerHTML  = arr[2];
+        document.getElementById("Answer3").display = 'none';
+        document.getElementById("three").style.display = 'none';
+        document.getElementById("Answer4").display = 'none';
+        document.getElementById("four").style.display = 'none';
+    }else{
+        document.getElementById("Question").innerHTML  = arr[0];
+        document.getElementById("Answer1").innerHTML  = arr[indexes.pop()];
+        document.getElementById("Answer2").innerHTML  = arr[indexes.pop()];
+        document.getElementById("Answer3").innerHTML  = arr[indexes.pop()];
+        document.getElementById("Answer4").innerHTML  = arr[indexes.pop()];
+    }
+    // console.log(data);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function checkAnswer(selectedAnswer) {
+    window.alert("sometext");
+}
 
